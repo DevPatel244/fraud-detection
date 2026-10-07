@@ -1,5 +1,7 @@
 # Credit Card Fraud Detection
 
+![tests](https://github.com/DevPatel244/fraud-detection/actions/workflows/ci.yml/badge.svg)
+
 An ensemble model (logistic regression, random forest, XGBoost) that scores credit card transactions for fraud, served through a FastAPI endpoint. Built step by step as a learning project.
 
 ## Data
