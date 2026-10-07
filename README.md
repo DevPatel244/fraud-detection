@@ -56,7 +56,7 @@ SHAP values for the XGBoost component (not the whole ensemble) show V14, V4, V12
 - Only 48 hours of data from one period, with a drifting fraud rate.
 - Small number of frauds in validation and test, so metrics are noisy.
 - The threshold reflects an arbitrary balance between missed fraud and false alarms. A real deployment would set it from actual costs.
-- No Docker image or monitoring yet.
+- No monitoring yet.
 
 ## Run it
 
@@ -66,6 +66,11 @@ SHAP values for the XGBoost component (not the whole ensemble) show V14, V4, V12
     jupyter lab
     uvicorn src.api:app --reload
     python -m pytest -v
+
+Or run it in Docker (the trained `models/ensemble.joblib` must exist locally, as it is copied into the image):
+
+    docker build -t fraud-api .
+    docker run --rm -p 8000:8000 fraud-api
 
 Example request:
 
@@ -77,5 +82,6 @@ Example request:
     src/features.py   shared feature preparation (training and API)
     src/ensemble.py   soft-voting helper
     src/api.py        FastAPI service
+    Dockerfile        container image for the API
     tests/            unit and API tests
     notebooks/        exploration, training, evaluation, SHAP
