@@ -10,3 +10,4 @@ joblib
 pytest
 jupyterlab
 httpx
+streamlit

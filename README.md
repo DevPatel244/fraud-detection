@@ -53,6 +53,18 @@ SHAP values for the XGBoost component (not the whole ensemble) show V14, V4, V12
 
 ![SHAP summary](docs/shap_summary.png)
 
+## Dashboard
+
+A Streamlit app to score single transactions with a SHAP explanation, score an uploaded CSV, and explore the precision/recall trade-off at different thresholds (validation data only, so the test set is never used to tune anything).
+
+    streamlit run src/dashboard.py
+
+It needs `data/creditcard.csv` and the trained `models/ensemble.joblib` locally.
+
+![Score a transaction](docs/dashboard_score.png)
+![Why this score (SHAP waterfall)](docs/dashboard_score_1.png)
+![Threshold explorer](docs/dashboard_threshold.png)
+
 ## Limitations
 
 - Only 48 hours of data from one period, with a drifting fraud rate.
@@ -84,6 +96,7 @@ Example request:
     src/features.py   shared feature preparation (training and API)
     src/ensemble.py   soft-voting helper
     src/api.py        FastAPI service
+    src/dashboard.py  Streamlit dashboard
     Dockerfile        container image for the API
     tests/            unit and API tests
     notebooks/        exploration, training, evaluation, SHAP
